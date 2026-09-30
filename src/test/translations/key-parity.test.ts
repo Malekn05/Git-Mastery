@@ -48,13 +48,21 @@ import playgroundTr from "~/translations/tr/playground";
 import installationTr from "~/translations/tr/installation";
 import faqTr from "~/translations/tr/faq";
 
+import commonAr from "~/translations/ar/common";
+import levelsAr from "~/translations/ar/levels";
+import terminalAr from "~/translations/ar/terminal";
+import homeAr from "~/translations/ar/home";
+import playgroundAr from "~/translations/ar/playground";
+import installationAr from "~/translations/ar/installation";
+import faqAr from "~/translations/ar/faq";
+
 type TranslationMap = Record<string, string>;
 
 const files: Record<string, Record<string, TranslationMap>> = {
-    common: { en: commonEn, de: commonDe, es: commonEs, fa: commonFa, hi: commonHi, tr: commonTr },
-    levels: { en: levelsEn, de: levelsDe, es: levelsEs, fa: levelsFa, hi: levelsHi, tr: levelsTr },
-    terminal: { en: terminalEn, de: terminalDe, es: terminalEs, fa: terminalFa, hi: terminalHi, tr: terminalTr },
-    home: { en: homeEn, de: homeDe, es: homeEs, fa: homeFa, hi: homeHi, tr: homeTr },
+    common: { en: commonEn, de: commonDe, es: commonEs, fa: commonFa, hi: commonHi, tr: commonTr, ar: commonAr },
+    levels: { en: levelsEn, de: levelsDe, es: levelsEs, fa: levelsFa, hi: levelsHi, tr: levelsTr, ar: levelsAr },
+    terminal: { en: terminalEn, de: terminalDe, es: terminalEs, fa: terminalFa, hi: terminalHi, tr: terminalTr, ar: terminalAr },
+    home: { en: homeEn, de: homeDe, es: homeEs, fa: homeFa, hi: homeHi, tr: homeTr, ar: homeAr },
     playground: {
         en: playgroundEn,
         de: playgroundDe,
@@ -62,6 +70,7 @@ const files: Record<string, Record<string, TranslationMap>> = {
         fa: playgroundFa,
         hi: playgroundHi,
         tr: playgroundTr,
+        ar: playgroundAr,
     },
     installation: {
         en: installationEn,
@@ -70,18 +79,13 @@ const files: Record<string, Record<string, TranslationMap>> = {
         fa: installationFa,
         hi: installationHi,
         tr: installationTr,
+        ar: installationAr,
     },
-    faq: { en: faqEn, de: faqDe, es: faqEs, fa: faqFa, hi: faqHi, tr: faqTr },
+    faq: { en: faqEn, de: faqDe, es: faqEs, fa: faqFa, hi: faqHi, tr: faqTr, ar: faqAr },
 };
 
-// Long strings (multi-sentence prose, story narratives, FAQ answers) that are still byte-identical
-// to the English source are almost certainly copy-pasted and never translated, rather than a
-// legitimate shared term (proper noun, URL, command syntax). Short identical values are common and
-// fine (e.g. "Terminal", "FAQ", distro names, brand names like "GitHub Desktop").
 const UNTRANSLATED_LENGTH_THRESHOLD = 150;
 
-// Keys whose value is legitimately identical across every language regardless of length: literal
-// shell scripts (comments and command syntax aren't prose to translate).
 const UNTRANSLATABLE_KEYS = new Set([
     "installation.linux.enhanced.sourceSteps",
     "installation.mac.enhanced.homebrewSteps",
